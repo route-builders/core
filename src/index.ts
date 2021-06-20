@@ -1,4 +1,3 @@
 // export * from './client-core';
 
-export { };
-
+export {};
