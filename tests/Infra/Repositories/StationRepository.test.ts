@@ -1,3 +1,3 @@
-describe('Station repository [true case]', () => {
-  // TODO: テスト書く。
-});
+// TODO: テスト書く。
+// describe('Station repository [true case]', () => {
+// });

@@ -12,7 +12,7 @@
     "composite": true,
     "removeComments": true,
     "noEmit": false,
-    "isolatedModules": true,
+    "isolatedModules": false,
 
     "strict": true,
     "noImplicitAny": true,
