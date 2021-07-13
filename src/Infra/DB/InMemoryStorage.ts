@@ -68,8 +68,14 @@ export class InMemoryStorage implements IStorage {
   };
 
   commandHistory = {
+    length: this.storage.commandHistory.length,
+
     findByPointer: (props: { pointer: number }): RawCommand | undefined => {
       return this.storage.commandHistory[props.pointer];
+    },
+
+    findAllByCounter: (props: { counter: number }): RawCommand[] => {
+      return this.storage.commandHistory.slice(props.counter);
     },
 
     findByUUID: (props: { uuid: string }): RawCommand | undefined => {

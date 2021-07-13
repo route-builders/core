@@ -7,7 +7,6 @@ import { NetworkCommandInvoked } from '../../Domain/values/NetworkCommand/Networ
 import { NetworkCommandName } from '../../Domain/values/NetworkCommand/NetworkCommandName';
 import { CommandHasNoUUIDError } from '../../errors/CommandHasNoUUIDError';
 import { CommandNotFoundFromStorageError } from '../../errors/CommandNotFoundFromStorageError';
-import { uuidGenerator } from '../../utils/UUID/uuidGenerator';
 import { IStorage, RawCommand } from '../DB/IStorage';
 
 export class CommandRepository {
@@ -17,7 +16,7 @@ export class CommandRepository {
   }
 
   addCommandAndInvoke(input: {
-    uuid?: UUID;
+    uuid: UUID;
     name: NetworkCommandName;
     originalData: NetworkCommandData;
     updatedData: NetworkCommandData;
@@ -27,8 +26,9 @@ export class CommandRepository {
     // TODO: よくない。
     command.invoke();
 
-    const uuid = uuidGenerator();
-    const invokedRawCommand = { uuid, ...command.raw };
+    // FIXME: uuid
+    // const uuid = uuidGenerator();
+    const invokedRawCommand = { ...command.raw };
     this.storage.commandHistory.insert(invokedRawCommand);
     return invokedRawCommand;
   }

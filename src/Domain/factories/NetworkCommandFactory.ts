@@ -5,7 +5,7 @@ import { NetworkCommandInvoked } from '../values/NetworkCommand/NetworkCommandIn
 import { NetworkCommandName } from '../values/NetworkCommand/NetworkCommandName';
 
 export type NetworkCommandValue = {
-  uuid?: string;
+  uuid: string;
   name: string;
   originalData: unknown;
   updatedData: unknown;
@@ -23,5 +23,9 @@ export class NetworkCommandFactory {
       updatedData: new NetworkCommandData(updatedData),
       invoked: new NetworkCommandInvoked(invoked),
     });
+  }
+
+  static fromJSON(value: string): NetworkCommand {
+    return NetworkCommandFactory.from(JSON.parse(value));
   }
 }

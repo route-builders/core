@@ -5,14 +5,14 @@ import { NetworkCommandInvoked } from '../values/NetworkCommand/NetworkCommandIn
 import { NetworkCommandName } from '../values/NetworkCommand/NetworkCommandName';
 
 export class NetworkCommand implements INetworkCommand {
-  uuid?: UUID;
+  uuid: UUID;
   name: NetworkCommandName;
   originalData: NetworkCommandData;
   updatedData: NetworkCommandData;
   invoked: NetworkCommandInvoked;
 
   constructor(props: INetworkCommand) {
-    this.uuid = new UUID(props.uuid?.value);
+    this.uuid = new UUID(props.uuid.value);
     this.name = new NetworkCommandName(props.name.value);
     this.originalData = new NetworkCommandData(props.originalData.value);
     this.updatedData = new NetworkCommandData(props.updatedData.value);

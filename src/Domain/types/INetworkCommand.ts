@@ -4,7 +4,7 @@ import { NetworkCommandInvoked } from '../values/NetworkCommand/NetworkCommandIn
 import { NetworkCommandName } from '../values/NetworkCommand/NetworkCommandName';
 
 export type INetworkCommand = {
-  uuid?: UUID;
+  uuid: UUID;
   name: NetworkCommandName;
   originalData: NetworkCommandData;
   updatedData: NetworkCommandData;

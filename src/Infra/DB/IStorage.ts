@@ -38,7 +38,12 @@ export interface IStorage {
   };
 
   commandHistory: {
+    length: number;
+
     findByPointer: ({ pointer }: { pointer: number }) => RawCommand | undefined;
+
+    // カウンタ以降のコマンドを全て返却
+    findAllByCounter: ({ counter }: { counter: number }) => RawCommand[];
 
     findByUUID: ({ uuid }: { uuid: string }) => RawCommand | undefined;
 

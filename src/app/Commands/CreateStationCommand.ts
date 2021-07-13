@@ -31,6 +31,8 @@ const createStationInputSchema = z.object({
 type CreateStationInput = z.infer<typeof createStationInputSchema>;
 
 export class CreateStationCommand implements ICommand {
+  public readonly priority = 100;
+
   private invoked: boolean;
   private invokedData: Station | undefined;
   private repository: StationRepository;
@@ -83,10 +85,16 @@ export class CreateStationCommand implements ICommand {
 
   get raw(): NetworkCommandValue & { invoked: boolean } {
     return {
+      // FIXME: UUID
+      uuid: '',
       name: this.props.name.value,
       originalData: this.props.originalData.value,
       updatedData: this.props.updatedData.value,
       invoked: this.invoked,
     };
+  }
+
+  toJSON(): string {
+    return JSON.stringify(this.raw);
   }
 }
